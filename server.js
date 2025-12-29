@@ -24,3 +24,5 @@ app.use("/orders", orderRoutes);
 app.listen(3000, () => {
   console.log("Server running at http://localhost:3000");
 });
+const adminRoutes = require("./routes/admin");
+app.use("/", adminRoutes);
