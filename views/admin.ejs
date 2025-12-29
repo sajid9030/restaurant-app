@@ -1,0 +1,19 @@
+<h2>Admin Dashboard - Orders</h2>
+
+<table border="1">
+  <tr>
+    <th>Order ID</th>
+    <th>Customer</th>
+    <th>Total</th>
+    <th>Status</th>
+  </tr>
+
+  <% orders.forEach(o => { %>
+    <tr>
+      <td><%= o.id %></td>
+      <td><%= o.name %></td>
+      <td>₹<%= o.total %></td>
+      <td><%= o.status %></td>
+    </tr>
+  <% }) %>
+</table>
