@@ -1,6 +1,32 @@
 <h2>Menu</h2>
+
 <ul>
-  <% items.forEach(i => { %>
-    <li><%= i.name %> - ₹<%= i.price %></li>
+  <% items.forEach(item => { %>
+    <li>
+      <%= item.name %> - ₹<%= item.price %>
+      <form method="POST" action="/menu/add" style="display:inline;">
+        <input type="hidden" name="id" value="<%= item.id %>">
+        <input type="hidden" name="name" value="<%= item.name %>">
+        <input type="hidden" name="price" value="<%= item.price %>">
+        <button>Add to Cart</button>
+      </form>
+    </li>
   <% }) %>
 </ul>
+
+<hr>
+
+<h3>Cart</h3>
+<ul>
+  <% let total = 0; %>
+  <% cart.forEach(c => { total += c.price; %>
+    <li><%= c.name %> - ₹<%= c.price %></li>
+  <% }) %>
+</ul>
+
+<p><strong>Total: ₹<%= total %></strong></p>
+
+<form method="POST" action="/orders/place">
+  <input type="hidden" name="total" value="<%= total %>">
+  <button>Checkout</button>
+</form>
